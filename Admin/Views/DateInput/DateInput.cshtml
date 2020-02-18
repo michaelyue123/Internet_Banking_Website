@@ -1,0 +1,34 @@
+﻿@model Admin.Models.DateInput
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h3>Please enter your time</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DateInput">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date1" class="control-label"></label>
+                <input asp-for="Date1" class="form-control" />
+                <span asp-validation-for="Date1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date2" class="control-label"></label>
+                <input asp-for="Date2" class="form-control" />
+                <span asp-validation-for="Date2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" asp-action="DateInput"  value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

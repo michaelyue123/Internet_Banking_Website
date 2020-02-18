@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Transaction>
+
+@{
+    ViewData["Title"] = "View";
+    String chart =  ViewBag.jsonString ;
+}
+
+<h1>View Transaction</h1>
+
+<a class="btn btn-primary" asp-action="Pie" asp-controller="Charts" >View Pie Chart</a>
+<a class="btn btn-primary" asp-action="Bar" asp-controller="Charts" >View Bar Chart</a>
+<a class="btn btn-primary" asp-action="Line" asp-controller="Charts">View Line Chart</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionTimeUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionTimeUtc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Customers" asp-action="Index">Back to Previous Page</a>
+
+

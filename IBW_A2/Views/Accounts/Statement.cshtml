@@ -1,0 +1,117 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Core.Common
+@using System;
+@model IPagedList<Transaction>
+
+@{
+    ViewData["Title"] = "View Transactions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var customer = (Customer)ViewBag.Customer;
+    TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
+}
+
+
+    <div>
+        <h1>My bank Statement </h1>
+        <table class="table">
+            <tr>
+                <th>
+                    Account Number
+                </th>
+                <th>
+                    Account Type
+                </th>
+                <th>
+                   Balance
+                </th>
+                      
+            </tr>
+            @foreach (var item in customer.Accounts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x => item.AccountNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => item.AccountType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => item.Balance)
+                    </td>
+                </tr>
+            }
+        </table>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(x => x[0].TransactionType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x[0].DestinationAccountNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x[0].Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x[0].Comment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x[0].TransactionTimeUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(x => x[0].AccountNumber)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x => item.TransactionType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => item.DestinationAccountNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => item.Comment)
+                    </td>
+                    <td>
+                        @{
+                            DateTime parameterValue = TimeZoneInfo.ConvertTimeFromUtc(item.TransactionTimeUtc, cstZone);
+                        }
+                        @Html.DisplayFor(x => parameterValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => item.AccountNumber)
+                    </td>
+                    @*<td>
+                        <a asp-action="Edit" asp-route-id="@item.TransactionID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.TransactionID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.TransactionID">Delete</a>
+                    </td>*@
+                </tr>
+            }
+        </table>
+
+        @Html.PagedListPager(Model, page => Url.Action("Statement", new { page }),
+            new PagedListRenderOptions
+            {
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" }
+            }
+       )
+    </div>
+
+    <div>
+        <a asp-action="Index" asp-controller="Accounts">Back to My Bank Statement</a>
+    </div>
+
+
+    
+
+
+

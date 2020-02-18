@@ -1,0 +1,74 @@
+﻿@model IEnumerable<IBW.Model.BillPay>
+@using System;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
+}
+
+<h1>Bill Pay</h1>
+
+<p>
+    <a asp-action="Create">Add Bill Pay</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @if (item.Block)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)<a>(blocked)</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+            }
+            <td>
+                @{
+                    DateTime parameterValue = TimeZoneInfo.ConvertTimeFromUtc(item.ScheduleDate, cstZone);
+                }
+                @Html.DisplayFor(x => parameterValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payee.PayeeName)
+            </td>
+            <td>
+                <a asp-action="Modify" asp-route-id="@item.BillPayID">Modify</a> |
+                <a asp-action="Details" asp-route-id="@item.BillPayID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BillPayID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

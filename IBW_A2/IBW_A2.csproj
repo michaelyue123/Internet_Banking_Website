@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\MvcController\**" />
+    <Content Remove="Controllers\MvcController\**" />
+    <EmbeddedResource Remove="Controllers\MvcController\**" />
+    <None Remove="Controllers\MvcController\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200122085220_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122085220_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122085834_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122085834_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122090748_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122090748_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122091839_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122091839_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122091945_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122091945_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122092222_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122092222_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122095527_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122095527_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122101418_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122101418_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122102755_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122102755_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200122110323_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200122110323_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200127035215_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200127035215_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200127085730_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200127085730_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.12.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="SimpleHashing" Version="1.0.3.1" />
+    <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
+    <PackageReference Include="Topshelf" Version="4.2.1" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.9.1" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Shared\_Login.cshtml" />
+  </ItemGroup>
+</Project>

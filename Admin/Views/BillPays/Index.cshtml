@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BillPay>
+@using System;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
+}
+
+<h1>Bill Pay</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.Block)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)<a>(blocked)</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                }
+                <td>
+                    @{
+                        DateTime parameterValue = TimeZoneInfo.ConvertTimeFromUtc(item.ScheduleDate, cstZone);
+                    }
+                    @Html.DisplayFor(x => parameterValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Period)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.payee.PayeeName)
+                </td>
+                <td>
+                    @if (item.Block)
+                    {
+                        <a asp-action="Reverse" asp-route-id="@item.BillPayID">Active</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Reverse" asp-route-id="@item.BillPayID">Suspend</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" target="_blank" asp-action="Index" asp-controller="Home">Back to Home</a>
