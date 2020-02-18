@@ -1,8 +1,3 @@
-Group 20
-s3796237
-s3713321
-
-
 # National Wealth Bank of Australasia (NWBA)
 
 NWBA is a simple Internet Banking System running on the web. User can log into this system and do the following actions
