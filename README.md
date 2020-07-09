@@ -1,13 +1,13 @@
 # National Wealth Bank of Australasia (NWBA)
 
 NWBA is a simple Internet Banking System running on the web. User can log into this system and do the following actions
+* Login/logout
 * Deposit 
 * Withdraw
 * Transfer
 * View Bank Statement
 * Bill Pay (scheduled pay)
 * View and Edit Customer Profile
-* Logout 
 
 ## New Version
 
